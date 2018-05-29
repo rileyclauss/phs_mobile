@@ -27,7 +27,7 @@ class MyHomePage extends StatelessWidget {
 
 
     Widget imgTxtBtn = new GestureDetector(
-      onTap:
+     // onTap: newState(),
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         mainAxisSize: MainAxisSize.max,
@@ -66,7 +66,7 @@ class MyHomePage extends StatelessWidget {
     return new Scaffold(
       backgroundColor: Colors.black,
       appBar: new AppBar(
-        title: new Text('App Name'),
+        title: new Text('PHS Mobile'),
         backgroundColor: Colors.black54,
 
       ),
@@ -93,28 +93,28 @@ class MyHomePage extends StatelessWidget {
                 'images/academicsicon.png', 'Academics',
               ),
               buttonColumn(
+                'images/counseling.png', 'Counseling',
+              ),
+              buttonColumn(
+                'images/athleticsicon.png', 'Athletics',
+              ),
+              buttonColumn(
                 'images/fineartsicon.png', 'Fine Arts',
               ),
               buttonColumn(
-                'images/newsicon.png', 'News',
+                'images/clubsicon.png', 'Clubs',
               ),
               buttonColumn(
-                'images/newsicon.png', 'News',
+                'images/keyicon.png', 'Staff Links',
               ),
               buttonColumn(
-                'images/newsicon.png', 'News',
+                'images/pennwebsite.png', 'Penn Website',
               ),
               buttonColumn(
-                'images/newsicon.png', 'News',
+                'images/contactusicon.png', 'Contact Us',
               ),
               buttonColumn(
-                'images/newsicon.png', 'News',
-              ),
-              buttonColumn(
-                'images/newsicon.png', 'News',
-              ),
-              buttonColumn(
-                'images/newsicon.png', 'News',
+                'images/abouticon.png', 'About Penn',
               ),
             ]
 
