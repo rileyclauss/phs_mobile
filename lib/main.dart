@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import 'dart:ui';
 // Uncomment lines 4 and 7 to view the visual layout at runtime.
 //import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
@@ -18,16 +19,20 @@ class FlutterView extends StatelessWidget {
   }
 }
 
+
+
+
+
+
+
 class MyHomePage extends StatelessWidget {
   // ignore: must_be_immutable
 
 
-  Widget buttonColumn(String img, String txt){
-
-
+  Widget buttonColumn(String img, String txt, String dest){
 
     Widget imgTxtBtn = new GestureDetector(
-     // onTap: newState(),
+      onTap: newState(dest),
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         mainAxisSize: MainAxisSize.max,
@@ -57,8 +62,32 @@ class MyHomePage extends StatelessWidget {
     return imgTxtBtn;
   }
 
-  @override
 
+  newState(String dest)async {
+    if (dest == 'website'){
+      try {
+        await launch(
+            'http://penn.phmschools.org/',
+            option: new CustomTabsOption(
+            toolbarColor: Colors.black54,
+            enableDefaultShare: true,
+            enableUrlBarHiding: true,
+            showPageTitle: true,
+            animation: new CustomTabsAnimation.slideIn()
+    // or user defined animation.
+
+    ),
+    );
+    } catch (e) {
+    // An exception is thrown if browser app is not installed on Android device.
+    debugPrint(e.toString());
+    }
+    }
+  }
+
+
+
+  @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
@@ -81,40 +110,40 @@ class MyHomePage extends StatelessWidget {
             padding: const EdgeInsets.all(1.0),
             children: <Widget>[
               buttonColumn(
-                'images/newsicon.png', 'News',
+                'images/newsicon.png', 'News', 'news'
               ),
               buttonColumn(
-                'images/calendaricon.png', 'Calendar',
+                'images/calendaricon.png', 'Calendar', 'calendar'
               ),
               buttonColumn(
-                'images/sapicon.png', 'Students and Parents',
+                'images/sapicon.png', 'Students and Parents', 'sap'
               ),
               buttonColumn(
-                'images/academicsicon.png', 'Academics',
+                'images/academicsicon.png', 'Academics', 'academies'
               ),
               buttonColumn(
-                'images/counseling.png', 'Counseling',
+                'images/counseling.png', 'Counseling', 'counseling'
               ),
               buttonColumn(
-                'images/athleticsicon.png', 'Athletics',
+                'images/athleticsicon.png', 'Athletics', 'athletics'
               ),
               buttonColumn(
-                'images/fineartsicon.png', 'Fine Arts',
+                'images/fineartsicon.png', 'Fine Arts', 'arts'
               ),
               buttonColumn(
-                'images/clubsicon.png', 'Clubs',
+                'images/clubsicon.png', 'Clubs', 'clubs'
               ),
               buttonColumn(
-                'images/keyicon.png', 'Staff Links',
+                'images/keyicon.png', 'Staff Links', 'links'
               ),
               buttonColumn(
-                'images/pennwebsite.png', 'Penn Website',
+                'images/pennwebsite.png', 'Penn Website', 'website'
               ),
               buttonColumn(
-                'images/contactusicon.png', 'Contact Us',
+                'images/contactusicon.png', 'Contact Us', 'contact'
               ),
               buttonColumn(
-                'images/abouticon.png', 'About Penn',
+                'images/abouticon.png', 'About Penn', 'about'
               ),
             ]
 
