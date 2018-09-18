@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import 'dart:ui';
+import 'dart:async';
 // Uncomment lines 4 and 7 to view the visual layout at runtime.
 //import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
@@ -19,68 +20,59 @@ class FlutterView extends StatelessWidget {
   }
 }
 
-
-
-
-
-
-
 class MyHomePage extends StatelessWidget {
   // ignore: must_be_immutable
+  Widget buttonColumn(String img, String txt, String dest, bool web) {
 
+     Widget imgTxtBtn = new GestureDetector(
+        onTap: _launchURL(dest),
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.max,
 
-  Widget buttonColumn(String img, String txt, String dest){
+          children: <Widget>[
 
-    Widget imgTxtBtn = new GestureDetector(
-      onTap: newState(dest),
-      child: new Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        mainAxisSize: MainAxisSize.max,
+            new Image.asset( // ignore: conflicting_dart_import
+              img,
+              colorBlendMode: BlendMode.src,
+              width: 100.0,
+              height: 90.0,
 
-        children: <Widget>[
+            ),
+            // ignore: conflicting_dart_import
+            new Text(txt, style: new TextStyle(color: Colors.white),
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.fade,
+              textScaleFactor: .9,),
 
-          new Image.asset( // ignore: conflicting_dart_import
-            img,
-            colorBlendMode: BlendMode.src,
-            width: 100.0,
-            height: 90.0,
+          ],
 
-
-          ),
-          // ignore: conflicting_dart_import
-          new Text(txt, style: new TextStyle(color: Colors.white), textAlign: TextAlign.center, overflow: TextOverflow.fade, textScaleFactor: 1.0,),
-
-        ],
-
-      )
+        )
     );
-      return imgTxtBtn;
+    return imgTxtBtn;
   }
-  void _launchURL(BuildContext context) async {
-    try {
-      await launch(
-        'https://flutter.io/',
-        option: new CustomTabsOption(
-          toolbarColor: Theme.of(context).primaryColor,
-          enableDefaultShare: true,
-          enableUrlBarHiding: true,
-          showPageTitle: true,
-          animation: new CustomTabsAnimation.slideIn()
 
-      ),
-    );
-    } catch (e) {
-    // An exception is thrown if browser app is not installed on Android device.
-    debugPrint(e.toString());
-    }
+  _launchURL(String dest){   //this runs as soon as the app starts. no idea why.
+     launch(                 //it doesn't run if there's no passed variables, but does when there is.
+       dest,
+       option: new CustomTabsOption(
+           toolbarColor: Colors.black54,
+           enableDefaultShare: true,
+           enableUrlBarHiding: true,
+           showPageTitle: true,
+           animation: new CustomTabsAnimation.slideIn()
+
+       ),
+
+     );
   }
 
 
 
-  newState(String dest)async {
+ /* newState(String dest)  {
     if (dest == 'website'){
       try {
-        await launch(
+           launch(
             'http://penn.phmschools.org/',
             option: new CustomTabsOption(
             toolbarColor: Colors.black54,
@@ -88,16 +80,16 @@ class MyHomePage extends StatelessWidget {
             enableUrlBarHiding: true,
             showPageTitle: true,
             animation: new CustomTabsAnimation.slideIn()
-    // or user defined animation.
+            ),
+          );
 
-    ),
-    );
-    } catch (e) {
-    // An exception is thrown if browser app is not installed on Android device.
-    debugPrint(e.toString());
+      } catch (e) {
+        // An exception is thrown if browser app is not installed on Android device.
+        debugPrint(e.toString());
+
+      }
     }
-    }
-  }
+  }*/
 
 
 
@@ -107,7 +99,7 @@ class MyHomePage extends StatelessWidget {
     final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
     final double itemWidth = size.width / 2;
     return new Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.black54,
       appBar: new AppBar(
         title: new Text('PHS Mobile'),
         backgroundColor: Colors.black54,
@@ -118,19 +110,19 @@ class MyHomePage extends StatelessWidget {
         child:
         new GridView.count(
             crossAxisCount: 4,
-            mainAxisSpacing: 4.0,
-            crossAxisSpacing: 0.0,
-            childAspectRatio: (itemWidth / itemHeight),
-            padding: const EdgeInsets.all(1.0),
+            mainAxisSpacing: 10.0,
+            crossAxisSpacing: 8.0,
+            childAspectRatio: (itemWidth/itemHeight),
+            padding: const EdgeInsets.only(left: 6.0, top: 0.0, right: 6.0, bottom: 0.0 ),
             children: <Widget>[
               buttonColumn(
-                'images/newsicon.png', 'News', 'news'
+                'images/newsicon.png', 'News', 'news', false,
               ),
               buttonColumn(
-                'images/calendaricon.png', 'Calendar', 'calendar'
+                'images/calendaricon.png', 'Calendar', 'calendar', true,
               ),
               buttonColumn(
-                'images/sapicon.png', 'Students and Parents', 'sap'
+                'images/sapicon.png', 'Students and Parents', 'sap', true
               ),
               buttonColumn(
                 'images/academicsicon.png', 'Academics', 'academies'
