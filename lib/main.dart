@@ -42,13 +42,13 @@ class MyHomePage extends StatelessWidget {  //homepage will not change, ie, stat
                 left: 6.0, top: 0.0, right: 6.0, bottom: 0.0),
             children: <Widget>[
               new iconTxtBtn(
-                  'https://penn.phmschools.org/', 'images/newsicon.png', 'News'),
+                  'https://pnn.phmschools.org/', 'images/newsicon.png', 'News'),
               new iconTxtBtn(                                                                            //all of these are instances of iconTxtBtn, defined in the
-                  'https://penn.phmschools.org/', 'images/calendaricon.png', 'Calendar'),  //              iconTxtButton.dart file
+                  'https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffcc33&src=phm.k12.in.us_jdattjdnmubmjev1moof0l8bh8%40group.calendar.google.com&color=%231B887A&ctz=America%2FNew_York/', 'images/calendaricon.png', 'Calendar'),  //              iconTxtButton.dart file
               new iconTxtBtn(                                                                            //every instance has a destination, either website or title, an icon,
-                  'https://penn.phmschools.org/', 'images/sapicon.png', 'Students and Parents'),         //and a title to be displayed under it
+                  'https://penn.phmschools.org/students-and-parents', 'images/sapicon.png', 'Students and Parents'),         //and a title to be displayed under it
               new iconTxtBtn(
-                'https://penn.phmschools.org/academies', 'images/academicsicon.png', 'Academics',),
+                  'https://penn.phmschools.org/academies', 'images/academicsicon.png', 'Academics',),
               new iconTxtBtn(
                   'https://penn.phmschools.org/counseling', 'images/counseling.png', 'Counseling'),
               new iconTxtBtn(
@@ -58,11 +58,11 @@ class MyHomePage extends StatelessWidget {  //homepage will not change, ie, stat
               new iconTxtBtn(
                   'https://penn.phmschools.org/students-and-parents/get-involved/students/clubs', 'images/clubsicon.png', 'Clubs'),
               new iconTxtBtn(
-                  'https://my.doculivery.com/External/PHMSchools/Login.aspx', 'images/keyicon.png', 'Staff Links'),
+                  'https://www.phmschools.org/user', 'images/keyicon.png', 'Staff Links'),
               new iconTxtBtn(
                   'https://penn.phmschools.org/', 'images/pennwebsite.png', 'Penn Website'),
               new iconTxtBtn(
-                  'https://penn.phmschools.org/office-hours', 'images/contactusicon.png', 'Contact Us'),
+                  'https://penn.phmschools.org/staff-directory', 'images/contactusicon.png', 'Contact Us'),
               new iconTxtBtn(
                   'https://penn.phmschools.org/about', 'images/abouticon.png', 'About Penn'),
             ]),
