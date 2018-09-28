@@ -2,197 +2,71 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import 'dart:ui';
+import 'iconTxtButton.dart';
 import 'dart:async';
-// Uncomment lines 4 and 7 to view the visual layout at runtime.
-//import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
-void main() {
-  //debugPaintSizeEnabled = true;
-  runApp(new FlutterView());
-}
+void main() {   //launch point for the application. Best practice is for main to be
+  runApp(new FlutterView()); //empty except for the runApp which begins the build process.
+}   //goto line 12
 
-class FlutterView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      home: new MyHomePage(),
+class FlutterView extends StatelessWidget {  //main widget for the overall scaffold
+  @override                                  //and all buttons
+  Widget build(BuildContext context) {       //MyHomePage is a seperate class because of other functions
+    return new MaterialApp(                  //MaterialApp is a flutter object
+      home: new MyHomePage(),                //goto line 21
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  // ignore: must_be_immutable
-  Widget buttonColumn(String img, String txt, String dest, bool web) {
-
-     Widget imgTxtBtn = new GestureDetector(
-        onTap: _launchURL(dest),
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          mainAxisSize: MainAxisSize.max,
-
-          children: <Widget>[
-
-            new Image.asset( // ignore: conflicting_dart_import
-              img,
-              colorBlendMode: BlendMode.src,
-              width: 100.0,
-              height: 90.0,
-
-            ),
-            // ignore: conflicting_dart_import
-            new Text(txt, style: new TextStyle(color: Colors.white),
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.fade,
-              textScaleFactor: .9,),
-
-          ],
-
-        )
-    );
-    return imgTxtBtn;
-  }
-
-  _launchURL(String dest){   //this runs as soon as the app starts. no idea why.
-     launch(                 //it doesn't run if there's no passed variables, but does when there is.
-       dest,
-       option: new CustomTabsOption(
-           toolbarColor: Colors.black54,
-           enableDefaultShare: true,
-           enableUrlBarHiding: true,
-           showPageTitle: true,
-           animation: new CustomTabsAnimation.slideIn()
-
-       ),
-
-     );
-  }
-
-
-
- /* newState(String dest)  {
-    if (dest == 'website'){
-      try {
-           launch(
-            'http://penn.phmschools.org/',
-            option: new CustomTabsOption(
-            toolbarColor: Colors.black54,
-            enableDefaultShare: true,
-            enableUrlBarHiding: true,
-            showPageTitle: true,
-            animation: new CustomTabsAnimation.slideIn()
-            ),
-          );
-
-      } catch (e) {
-        // An exception is thrown if browser app is not installed on Android device.
-        debugPrint(e.toString());
-
-      }
-    }
-  }*/
-
-
+class MyHomePage extends StatelessWidget {  //homepage will not change, ie, stateless widget
+  // ignore: must_be_immutable              //may have to implement stateful widget to get rss, contact, etc?
 
   @override
-  Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
-    final double itemWidth = size.width / 2;
-    return new Scaffold(
-      backgroundColor: Colors.black54,
-      appBar: new AppBar(
-        title: new Text('PHS Mobile'),
-        backgroundColor: Colors.black54,
-
+  Widget build(BuildContext context) {      //deployment for new MyHomePage();
+    var size = MediaQuery.of(context).size; //gets the size of the entire screen
+    final double itemHeight = (size.height - kToolbarHeight - 24) / 2; //gets height - top toolbar
+    final double itemWidth = size.width / 2;//gets screen width
+    return new Scaffold(                    //scaffold is the base almost everything is built on. gives name bar and body
+      backgroundColor: Colors.black38,      //background color of icons
+      appBar: new AppBar(                   //AppBar is the title at the top
+        title: new Text('PHS Mobile'),      //may remove if we get a nice background
+        backgroundColor: Colors.black54,    //background of titlebar. these colors don't seem to be implementing, however @TODO
       ),
-      body:
-      new Container(
-        child:
-        new GridView.count(
-            crossAxisCount: 4,
-            mainAxisSpacing: 10.0,
-            crossAxisSpacing: 8.0,
-            childAspectRatio: (itemWidth/itemHeight),
-            padding: const EdgeInsets.only(left: 6.0, top: 0.0, right: 6.0, bottom: 0.0 ),
+      body: new Container(                  //Container for icons and text
+        child: new GridView.count(          //GridView.count is most effecient for formatting and adjusting to various screen sizes
+            crossAxisCount: 4,              //four icons per row
+            mainAxisSpacing: 10.0,          // 10px between tops and bottoms
+            crossAxisSpacing: 8.0,          // 8px side to side
+            childAspectRatio: (itemWidth / itemHeight), //aspect ratio forced for items, in this case, iconTxtBtn
+            padding: const EdgeInsets.only(   //padding around the GridView itself
+                left: 6.0, top: 0.0, right: 6.0, bottom: 0.0),
             children: <Widget>[
-              buttonColumn(
-                'images/newsicon.png', 'News', 'news', false,
-              ),
-              buttonColumn(
-                'images/calendaricon.png', 'Calendar', 'calendar', true,
-              ),
-              buttonColumn(
-                'images/sapicon.png', 'Students and Parents', 'sap', true
-              ),
-              buttonColumn(
-                'images/academicsicon.png', 'Academics', 'academies'
-              ),
-              buttonColumn(
-                'images/counseling.png', 'Counseling', 'counseling'
-              ),
-              buttonColumn(
-                'images/athleticsicon.png', 'Athletics', 'athletics'
-              ),
-              buttonColumn(
-                'images/fineartsicon.png', 'Fine Arts', 'arts'
-              ),
-              buttonColumn(
-                'images/clubsicon.png', 'Clubs', 'clubs'
-              ),
-              buttonColumn(
-                'images/keyicon.png', 'Staff Links', 'links'
-              ),
-              buttonColumn(
-                'images/pennwebsite.png', 'Penn Website', 'website'
-              ),
-              buttonColumn(
-                'images/contactusicon.png', 'Contact Us', 'contact'
-              ),
-              buttonColumn(
-                'images/abouticon.png', 'About Penn', 'about'
-              ),
-            ]
-
-        ),
-
+              new iconTxtBtn(
+                  'https://penn.phmschools.org/', 'images/newsicon.png', 'News'),
+              new iconTxtBtn(                                                                            //all of these are instances of iconTxtBtn, defined in the
+                  'https://penn.phmschools.org/', 'images/calendaricon.png', 'Calendar'),  //              iconTxtButton.dart file
+              new iconTxtBtn(                                                                            //every instance has a destination, either website or title, an icon,
+                  'https://penn.phmschools.org/', 'images/sapicon.png', 'Students and Parents'),         //and a title to be displayed under it
+              new iconTxtBtn(
+                'https://penn.phmschools.org/academies', 'images/academicsicon.png', 'Academics',),
+              new iconTxtBtn(
+                  'https://penn.phmschools.org/counseling', 'images/counseling.png', 'Counseling'),
+              new iconTxtBtn(
+                  'https://pennant.phmschools.org/','images/athleticsicon.png', 'Athletics'),
+              new iconTxtBtn(
+                  'https://penn.phmschools.org/fine-arts-communications-academy-0', 'images/fineartsicon.png', 'Fine Arts'),
+              new iconTxtBtn(
+                  'https://penn.phmschools.org/students-and-parents/get-involved/students/clubs', 'images/clubsicon.png', 'Clubs'),
+              new iconTxtBtn(
+                  'https://my.doculivery.com/External/PHMSchools/Login.aspx', 'images/keyicon.png', 'Staff Links'),
+              new iconTxtBtn(
+                  'https://penn.phmschools.org/', 'images/pennwebsite.png', 'Penn Website'),
+              new iconTxtBtn(
+                  'https://penn.phmschools.org/office-hours', 'images/contactusicon.png', 'Contact Us'),
+              new iconTxtBtn(
+                  'https://penn.phmschools.org/about', 'images/abouticon.png', 'About Penn'),
+            ]),
       ),
-
     );
   }
-
-  } //build
-
-
-
-
-
-  // Create a grid with 4 columns. If you change the scrollDirection to
-  // horizontal, this would produce 2 rows.
-
-  /*new Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                buildButtonColumn(new AssetImage('images/news.png'), 'News'),
-                buildButtonColumn(new AssetImage('images/calendar.png'), 'Calendars'),
-                buildButtonColumn(new AssetImage('images/parents_and_students.png'), 'Students and Parents'),
-                buildButtonColumn(new AssetImage('images/academicsicon.png'), 'Academics'),]
-          ),
-          new Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                buildButtonColumn(new AssetImage('images/counselingicon.png'), 'Counseling'),
-                buildButtonColumn(new AssetImage('images/athleticsicon.png'), 'Athletics'),
-                buildButtonColumn(new AssetImage('images/finearts.png'), 'Fine Arts'),
-                buildButtonColumn(new AssetImage('images/clubs.png'), 'Clubs'),]
-          ),
-          new Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                buildButtonColumn(new AssetImage('images/key.png'), 'Staff Links'),
-                buildButtonColumn(new AssetImage('images/pennwebsite.png'), 'Penn Website'),
-                buildButtonColumn(new AssetImage('images/contact_us.png'), 'Contact Us'),
-                buildButtonColumn(new AssetImage('images/abouticon.png'), 'About Penn'),]
-          )*/
-
-
+} //build
