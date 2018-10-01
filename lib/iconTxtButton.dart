@@ -4,7 +4,7 @@ import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import 'dart:ui';
 import 'dart:async';
 
-class iconTxtBtn extends StatelessWidget{
+class iconTxtBtn extends StatelessWidget {
   String _dest;
   String _icon;
   String _txt;
@@ -15,8 +15,7 @@ class iconTxtBtn extends StatelessWidget{
     this._txt = txt;
   }
 
-  Widget build(BuildContext context){
-
+  Widget build(BuildContext context) {
     Widget imgTxtBtn = new GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () => _launchURL(_dest),
@@ -43,33 +42,31 @@ class iconTxtBtn extends StatelessWidget{
         ));
 
     return imgTxtBtn;
+  }
 
-}
+  void _launchURL(dest) async {
+    try {
+      await launch(
+        dest,
+        option: new CustomTabsOption(
+          toolbarColor: Colors.black45,
+          enableDefaultShare: true,
+          enableUrlBarHiding: true,
+          showPageTitle: true,
+          animation: new CustomTabsAnimation.slideIn(),
+          // or user defined animation.
 
-void _launchURL(dest) async {
-  try {
-    await launch(
-      dest,
-      option: new CustomTabsOption(
-        toolbarColor: Colors.black45,
-        enableDefaultShare: true,
-        enableUrlBarHiding: true,
-        showPageTitle: true,
-        animation: new CustomTabsAnimation.slideIn(),
-        // or user defined animation.
-
-      extraCustomTabs: <String>[
-        // ref. https://play.google.com/store/apps/details?id=org.mozilla.firefox
-        'org.mozilla.firefox',
-        // ref. https://play.google.com/store/apps/details?id=com.microsoft.emmx
-        'com.microsoft.emmx',
-      ],
-    ),
-  );
-  } catch (e) {
-  // An exception is thrown if browser app is not installed on Android device.
-  debugPrint(e.toString());
+          extraCustomTabs: <String>[
+            // ref. https://play.google.com/store/apps/details?id=org.mozilla.firefox
+            'org.mozilla.firefox',
+            // ref. https://play.google.com/store/apps/details?id=com.microsoft.emmx
+            'com.microsoft.emmx',
+          ],
+        ),
+      );
+    } catch (e) {
+      // An exception is thrown if browser app is not installed on Android device.
+      debugPrint(e.toString());
+    }
   }
 }
-}
-
