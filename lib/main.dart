@@ -4,16 +4,19 @@ import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import 'dart:ui';
 import 'package:splashscreen/splashscreen.dart';
 import 'dart:async';
+import 'package:flutter/services.dart';
 
 void main(){
   runApp(new MaterialApp(
     home: new MyApp(),
   ));
+  SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
 }
 
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => new _MyAppState();
+
 }
 
 class _MyAppState extends State<MyApp> {
