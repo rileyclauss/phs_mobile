@@ -14,7 +14,7 @@ class FlutterView extends StatelessWidget {
   //main widget for the overall scaffold
   @override //and all buttons
   Widget build(BuildContext context) {
-    //MyHomePage is a seperate class because of other functions
+    //MyHomePage is a separate class because of other functions
     return new MaterialApp(
       //MaterialApp is a flutter object
       theme: ThemeData(
@@ -46,7 +46,7 @@ class MyHomePage extends StatelessWidget {
       appBar: new AppBar(
         //AppBar is the title at the top
         title: new Text('PHS Mobile'), //may remove if we get a nice background
-        //background of titlebar.
+        //background of title bar.
       ),
       body: new Stack(
         children: <Widget>[
