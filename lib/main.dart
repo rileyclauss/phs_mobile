@@ -8,8 +8,7 @@ void main() {
   //launch point for the application. Best practice is for main to be
   runApp(
       new FlutterView()); //empty except for the runApp which begins the build process.
-} //goto line 12
-
+}
 class FlutterView extends StatelessWidget {
   //main widget for the overall scaffold
   @override //and all buttons
