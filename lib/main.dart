@@ -74,7 +74,7 @@ class MyHomePage extends StatelessWidget {
                     right: 10.0,
                     bottom: 0.0),
                 children: <Widget>[
-                  new IconTxtBtn('https://pnn.phmschools.org/',
+                  new IconTxtBtn('https://penn.phmschools.org/news/',
                       'images/newsicon.png', 'News'),
                   new IconTxtBtn(
                       'https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffcc33&src=phm.k12.in.us_jdattjdnmubmjev1moof0l8bh8%40group.calendar.google.com&color=%231B887A&ctz=America%2FNew_York/',
