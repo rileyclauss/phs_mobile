@@ -22,11 +22,11 @@ flutter_icons:
 flutter:
   uses-material-design: true
   assets:
-    - images/splashscreen.png
-    - images/background.png
+
     - images/abouticon.png
     - images/academicsicon.png
     - images/athleticsicon.png
+    - images/background.png
     - images/calendaricon.png
     - images/clubsicon.png
     - images/contactusicon.png
@@ -36,3 +36,4 @@ flutter:
     - images/newsicon.png
     - images/pennwebsite.png
     - images/sapicon.png
+    - images/splashscreen.png

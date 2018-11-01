@@ -7,8 +7,9 @@ import 'package:flutter/services.dart';
 void main() {
   //launch point for the application. Best practice is for main to be
   runApp(
-      new FlutterView()); //empty except for the runApp which begins the build process.
+     new FlutterView()); //empty except for the runApp which begins the build process.
 }
+
 class FlutterView extends StatelessWidget {
   //main widget for the overall scaffold
   @override //and all buttons
@@ -50,7 +51,6 @@ class MyHomePage extends StatelessWidget {
       body: new Stack(
         children: <Widget>[
           new Container(
-
             decoration: new BoxDecoration(
               image: new DecorationImage(
                 image: new AssetImage("images/background.png"),
