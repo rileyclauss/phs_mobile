@@ -11,13 +11,14 @@ void main() {
   runApp(
       new FlutterView()); //empty except for the runApp which begins the build process.
   SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
+
 }
 
 class FlutterView extends StatelessWidget {
   //main widget for the overall scaffold
   @override //and all buttons
   Widget build(BuildContext context) {
-    //MyHomePage is a seperate class because of other functions
+    //MyHomePage is a separate class because of other functions
     return new MaterialApp(
       //MaterialApp is a flutter object
       theme: ThemeData(
@@ -40,7 +41,6 @@ class MyHomePage extends StatefulWidget {
   }
 
 }
-
 
 class _MyHomePageState extends State<MyHomePage> {
   //homepage will not change, ie, stateless widget
@@ -87,7 +87,6 @@ class _MyHomePageState extends State<MyHomePage> {
       body: new Stack(
         children: <Widget>[
           new Container(
-
             decoration: new BoxDecoration(
               image: new DecorationImage(
                 image: new AssetImage("images/background.png"),
@@ -124,8 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   new IconTxtBtn(
                     'academics',
                     'images/academicsicon.png',
-                    'Academics',
-                  ),
+                    'Academics',),
                   new IconTxtBtn('https://penn.phmschools.org/counseling',
                       'images/counseling.png', 'Counseling'),
                   new IconTxtBtn('https://pennant.phmschools.org/',
