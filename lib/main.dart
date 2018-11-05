@@ -3,12 +3,15 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import 'dart:ui';
 import 'package:flutter/services.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
 
 void main() {
   //launch point for the application. Best practice is for main to be
   runApp(
       new FlutterView()); //empty except for the runApp which begins the build process.
-} //goto line 12
+  SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
+}
 
 class FlutterView extends StatelessWidget {
   //main widget for the overall scaffold
@@ -24,15 +27,48 @@ class FlutterView extends StatelessWidget {
         buttonColor: Colors.black,
 
       ),
+      // ignore: new_with_undefined_constructor_default
       home: new MyHomePage(), //goto line 21
     );
   }
 }
+class MyHomePage extends StatefulWidget {
+  //@override
+  //_MyHomePageState StatefulWidget.createState() => _MyHomePageState
+  final String _appBarTitle;
 
-class MyHomePage extends StatelessWidget {
+  MyHomePage(this._appBarTitle, { Key key }) : super(key: key);
+  @override
+  MyHomePageState createState() => new _MyHomePagestate();
+
+}
+
+
+class _MyHomePagestate extends State<MyHomePageState> {
   //homepage will not change, ie, stateless widget
-  // ignore: must_be_immutable              //may have to implement stateful widget to get rss, contact, etc?
-
+  // ignore: must_be_immutable
+  // may have to implement stateful widget to get rss, contact, etc?
+  FirebaseMessaging _firebaseMessaging = new FirebaseMessaging();
+  @override
+  void initState() {
+    super.initState();
+    _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) {
+        print('on message $message');
+      },
+      onResume: (Map<String, dynamic> message) {
+        print('on resume $message');
+      },
+      onLaunch: (Map<String, dynamic> message) {
+        print('on launch $message');
+      },
+    );
+    _firebaseMessaging.requestNotificationPermissions(
+        const IosNotificationSettings(sound: true, badge: true, alert: true));
+    _firebaseMessaging.getToken().then((token){
+      print(token);
+    });
+  }
   @override
   Widget build(BuildContext context) {
     //deployment for new MyHomePage();
@@ -43,9 +79,11 @@ class MyHomePage extends StatelessWidget {
     return new Scaffold(
       //scaffold is the base almost everything is built on. gives name bar and body
       //background color of icons
+      resizeToAvoidBottomPadding: false,
+
       appBar: new AppBar(
         //AppBar is the title at the top
-        title: new Text('PHS Mobile'), //may remove if we get a nice background
+        title: new Text('Penn High School'), //may remove if we get a nice background
         //background of titlebar.
       ),
       body: new Stack(
@@ -75,7 +113,7 @@ class MyHomePage extends StatelessWidget {
                     right: 10.0,
                     bottom: 0.0),
                 children: <Widget>[
-                  new IconTxtBtn('https://pnn.phmschools.org/',
+                  new IconTxtBtn('https://penn.phmschools.org/news',
                       'images/newsicon.png', 'News'),
                   new IconTxtBtn(
                       'https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffcc33&src=phm.k12.in.us_jdattjdnmubmjev1moof0l8bh8%40group.calendar.google.com&color=%231B887A&ctz=America%2FNew_York/',
@@ -118,10 +156,12 @@ class MyHomePage extends StatelessWidget {
   }
 } //build
 
+
 class AcademicLinks extends StatelessWidget {
-  @override
+    @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text('Academics Links'),
       ),
@@ -230,6 +270,7 @@ class StaffLinks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text('Staff Links'),
       ),
