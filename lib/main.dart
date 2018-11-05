@@ -33,18 +33,16 @@ class FlutterView extends StatelessWidget {
   }
 }
 class MyHomePage extends StatefulWidget {
-  //@override
-  //_MyHomePageState StatefulWidget.createState() => _MyHomePageState
-  final String _appBarTitle;
-
-  MyHomePage(this._appBarTitle, { Key key }) : super(key: key);
   @override
-  MyHomePageState createState() => new _MyHomePagestate();
+  //_MyHomePageState StatefulWidget.createState() => _MyHomePageState
+  _MyHomePageState createState() {
+    return _MyHomePageState();
+  }
 
 }
 
 
-class _MyHomePagestate extends State<MyHomePageState> {
+class _MyHomePageState extends State<MyHomePage> {
   //homepage will not change, ie, stateless widget
   // ignore: must_be_immutable
   // may have to implement stateful widget to get rss, contact, etc?
