@@ -30,8 +30,7 @@ class FlutterView extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  //homepage will not change, ie, stateless widget
-  // ignore: must_be_immutable              //may have to implement stateful widget to get rss, contact, etc?
+
 
   @override
   Widget build(BuildContext context) {
@@ -74,11 +73,7 @@ class MyHomePage extends StatelessWidget {
                     right: 10.0,
                     bottom: 0.0),
                 children: <Widget>[
-<<<<<<< HEAD
-                  new IconTxtBtn('https://penn.phmschools.org/news',
-=======
                   new IconTxtBtn('https://penn.phmschools.org/news/',
->>>>>>> 93619c6aae595bfe743aaeaa824cbd0612e68380
                       'images/newsicon.png', 'News'),
                   new IconTxtBtn(
                       'https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffcc33&src=phm.k12.in.us_jdattjdnmubmjev1moof0l8bh8%40group.calendar.google.com&color=%231B887A&ctz=America%2FNew_York/',
@@ -91,8 +86,7 @@ class MyHomePage extends StatelessWidget {
                   new IconTxtBtn(
                     'academics',
                     'images/academicsicon.png',
-                    'Academics',
-                  ),
+                    'Academics',),
                   new IconTxtBtn('https://penn.phmschools.org/counseling',
                       'images/counseling.png', 'Counseling'),
                   new IconTxtBtn('https://pennant.phmschools.org/',
