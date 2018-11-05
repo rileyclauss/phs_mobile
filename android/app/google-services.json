@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "514645777368",
+    "firebase_url": "https://phs-mobile-f285e.firebaseio.com",
+    "project_id": "phs-mobile-f285e",
+    "storage_bucket": "phs-mobile-f285e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514645777368:android:ccb3a2b1a61cac67",
+        "android_client_info": {
+          "package_name": "org.phmschools.penn.phsmobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514645777368-2huesbgtnsrtg59flq5lt5e21d257rbl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmXcm-l9PUGBEreGVQfQQP_LYSgYo8GZY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
