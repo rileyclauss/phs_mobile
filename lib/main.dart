@@ -10,7 +10,6 @@ void main() {
   //launch point for the application. Best practice is for main to be
   runApp(
       new FlutterView()); //empty except for the runApp which begins the build process.
-  SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
 
 }
 
@@ -77,7 +76,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return new Scaffold(
       //scaffold is the base almost everything is built on. gives name bar and body
       //background color of icons
-      resizeToAvoidBottomPadding: false,
 
       appBar: new AppBar(
         //AppBar is the title at the top
