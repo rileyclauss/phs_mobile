@@ -81,6 +81,13 @@ class _MyHomePageState extends State<MyHomePage> {
         //AppBar is the title at the top
         title: new Text('Penn High School'), //may remove if we get a nice background
         //background of titlebar.
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.more_vert),
+            tooltip: 'Air it',
+            onPressed: dropDownCard,
+          ),
+        ],
       ),
       body: new Stack(
         children: <Widget>[
@@ -149,6 +156,28 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 } //build
+
+class bugCreditCard extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    final TextStyle textStyle = Theme.of(context).textTheme.display1;
+    return Card(
+      color: Colors.white,
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Icon(choice.icon, size: 128.0, color: textStyle.color),
+            Text(choice.title, style: textStyle),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 
 
 class AcademicLinks extends StatelessWidget {
@@ -260,6 +289,7 @@ class AcademicLinks extends StatelessWidget {
 }
 
 
+
 class StaffLinks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -337,9 +367,42 @@ class StaffLinks extends StatelessWidget {
             style: new TextStyle(
               color: Colors.white,
             ),
+            textAlign: TextAlign.center, //https://adminweb.aesoponline.com/access
+          ),
+          new SizedBox(
+            width: double.infinity,
+            child: new RaisedButton(
+              child: Text('Frontline (Aesop)', style: new TextStyle(color: Colors.yellow),),
+              onPressed: () {
+                _launchURL('https://adminweb.aesoponline.com/access',
+                    context);
+              },
+            ),
+          ),
+          new Text(
+            'Frontline Education, formerly known as Aesop, is an absence management resource for teachers. This will take you to the login page.',
+            style: new TextStyle(
+              color: Colors.white,
+            ),
+            textAlign: TextAlign.center, //https://adminweb.aesoponline.com/access
+          ),
+          new SizedBox(
+            width: double.infinity,
+            child: new RaisedButton(
+              child: Text('Home File Access', style: new TextStyle(color: Colors.yellow),),
+              onPressed: () {
+                _launchURL('https://sites.google.com/a/phm.k12.in.us/home-file-access/',
+                    context);
+              },
+            ),
+          ),
+          new Text(
+            'This Google Site will guide you through accesing your computer\'s files from home.',
+            style: new TextStyle(
+              color: Colors.white,
+            ),
             textAlign: TextAlign.center,
           ),
-
           //
         ],
       ),

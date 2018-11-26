@@ -45,8 +45,11 @@ flutter {
 }
 allprojects {
     repositories {
+        maven {
+            url 'https://dl.google.com/dl/android/maven2'
+        }
         google()
-        jcenter{ url "http://jcenter.bintray.com/"}
+        jcenter()
     }
 }
 
