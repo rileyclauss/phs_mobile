@@ -83,9 +83,14 @@ class _MyHomePageState extends State<MyHomePage> {
         //background of titlebar.
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.more_vert),
-            tooltip: 'Air it',
-            onPressed: dropDownCard,
+            icon: Icon(Icons.people),
+            tooltip: 'More Options',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Credits()),
+              );
+            },
           ),
         ],
       ),
@@ -157,25 +162,26 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 } //build
 
-class bugCreditCard extends StatelessWidget {
-
+class Credits extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    final TextStyle textStyle = Theme.of(context).textTheme.display1;
-    return Card(
-      color: Colors.white,
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Icon(choice.icon, size: 128.0, color: textStyle.color),
-            Text(choice.title, style: textStyle),
-          ],
-        ),
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Credits')
       ),
+      body:
+        new Center(
+          child: Container(
+            alignment: Alignment.center,
+            child: Text(
+                'Apple Developer: Micah Focht\tAndroid Developer: Riley Clauss\tGraphics and Design: James Morris',
+            textAlign: TextAlign.center)
+          )
+        )
     );
   }
+
 }
 
 
