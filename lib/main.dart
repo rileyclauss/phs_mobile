@@ -104,8 +104,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
+
           new Container(
             //Container for icons and text
+
             child: new GridView.count(
                 //GridView.count is most efficient for formatting and adjusting to various screen sizes
                 crossAxisCount: 4, //four icons per row
@@ -119,7 +121,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     top: 0.0,
                     right: 10.0,
                     bottom: 0.0),
-                children: <Widget>[
+                    physics: const NeverScrollableScrollPhysics(),
+    children: <Widget>[
                   new IconTxtBtn('https://penn.phmschools.org/news',
                       'images/newsicon.png', 'News'),
                   new IconTxtBtn(
@@ -175,8 +178,11 @@ class Credits extends StatelessWidget{
           child: Container(
             alignment: Alignment.center,
             child: Text(
-                'Apple Developer: Micah Focht\tAndroid Developer: Riley Clauss\tGraphics and Design: James Morris',
-            textAlign: TextAlign.center)
+              "Apple Developer: Micah Focht\n\n"
+              "Android Developer: Riley Clauss\n\n"
+              "Graphics and Design: James Morris\n\n",
+              textAlign: TextAlign.center
+            )
           )
         )
     );
