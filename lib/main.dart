@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import 'dart:ui';
+import 'Strings.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-
 
 void main() {
   //launch point for the application. Best practice is for main to be
   runApp(
       new FlutterView()); //empty except for the runApp which begins the build process.
-
 }
 
 class FlutterView extends StatelessWidget {
@@ -25,20 +24,19 @@ class FlutterView extends StatelessWidget {
         primaryColor: Colors.black,
         accentColor: Colors.yellow,
         buttonColor: Colors.black,
-
       ),
       // ignore: new_with_undefined_constructor_default
       home: new MyHomePage(), //goto line 21
     );
   }
 }
+
 class MyHomePage extends StatefulWidget {
   @override
   //_MyHomePageState StatefulWidget.createState() => _MyHomePageState
   _MyHomePageState createState() {
     return _MyHomePageState();
   }
-
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -62,10 +60,11 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     _firebaseMessaging.requestNotificationPermissions(
         const IosNotificationSettings(sound: true, badge: true, alert: true));
-    _firebaseMessaging.getToken().then((token){
+    _firebaseMessaging.getToken().then((token) {
       print(token);
     });
   }
+
   @override
   Widget build(BuildContext context) {
     //deployment for new MyHomePage();
@@ -79,7 +78,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
       appBar: new AppBar(
         //AppBar is the title at the top
-        title: new Text('Penn High School'), //may remove if we get a nice background
+        title: new Text(
+            'Penn High School'), //may remove if we get a nice background
         //background of titlebar.
         actions: <Widget>[
           IconButton(
@@ -104,7 +104,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-
           new Container(
             //Container for icons and text
 
@@ -121,14 +120,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     top: 0.0,
                     right: 10.0,
                     bottom: 0.0),
-                    physics: const NeverScrollableScrollPhysics(),
-    children: <Widget>[
+                physics: const NeverScrollableScrollPhysics(),
+                children: <Widget>[
                   new IconTxtBtn('https://penn.phmschools.org/news',
                       'images/newsicon.png', 'News'),
                   new IconTxtBtn(
-                      'https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffcc33&src=phm.k12.in.us_jdattjdnmubmjev1moof0l8bh8%40group.calendar.google.com&color=%231B887A&ctz=America%2FNew_York/',
+                      'https://penn.phmschools.org/calendars#Penn%20High%20School%20Public%20Calendar',
                       'images/calendaricon.png',
-                      'Calendar'), //              IconTxtButton.dart file
+                      'Calendars'), //              IconTxtButton.dart file
                   new IconTxtBtn(
                       'https://penn.phmschools.org/students-and-parents',
                       'images/sapicon.png',
@@ -136,7 +135,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   new IconTxtBtn(
                     'academics',
                     'images/academicsicon.png',
-                    'Academics',),
+                    'Academics',
+                  ),
                   new IconTxtBtn('https://penn.phmschools.org/counseling',
                       'images/counseling.png', 'Counseling'),
                   new IconTxtBtn('https://pennant.phmschools.org/',
@@ -149,8 +149,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       'https://penn.phmschools.org/students-and-parents/get-involved/students/clubs',
                       'images/clubsicon.png',
                       'Clubs'),
-                  new IconTxtBtn('stafflinks',
-                      'images/keyicon.png', 'Staff Links'),
+                  new IconTxtBtn(
+                      'stafflinks', 'images/keyicon.png', 'Staff Links'),
                   new IconTxtBtn('https://penn.phmschools.org/',
                       'images/pennwebsite.png', 'Penn Website'),
                   new IconTxtBtn('https://penn.phmschools.org/staff-directory',
@@ -165,35 +165,74 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 } //build
 
-class Credits extends StatelessWidget{
+class Credits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Credits')
-      ),
-      body:
-        new Center(
-          child: Container(
-            alignment: Alignment.center,
-            child: Text(
-              "Apple Developer: Micah Focht\n\n"
-              "Android Developer: Riley Clauss\n\n"
-              "Graphics and Design: James Morris\n\n",
-              textAlign: TextAlign.center
-            )
-          )
-        )
-    );
+        appBar: AppBar(title: Text('Credits')),
+        body: new Column(
+          children: <Widget>[
+            new Center(
+                child: Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                        "Apple Developer: Micah Focht\n\n"
+                        "Android Developer: Riley Clauss\n\n"
+                        "Graphics and Design: James Morris\n\n",
+                        textAlign: TextAlign.center))),
+            new SizedBox(
+              width: double.infinity,
+              child: new RaisedButton(
+                child: Text(
+                  'Open Source Licenses',
+                  style: new TextStyle(color: Colors.yellow),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => OpenSourceLibraries()),
+                  );
+                },
+              ),
+            ),
+          ],
+        ));
   }
+/*
 
+
+ */
 }
 
+class OpenSourceLibraries extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      appBar: AppBar(
+        title: Text('Academics Links'),
+      ),
+      body: Flex(children: <Widget>[
+        Expanded(child: Container(
+          padding: EdgeInsets.all(5.0),
+          child: SingleChildScrollView(child: Text(
+            Strings.TABSopenSource + Strings.LAUNCHopenSource,
+            maxLines: null,
 
+            overflow: TextOverflow.clip,
+          ))
+        ),
+        )
+      ], direction: Axis.vertical,)
+    );
+  }
+}
+/*
+ */
+//new Text('Special thanks to the Android Libraries and StackOverflow.'),
 
 class AcademicLinks extends StatelessWidget {
-    @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
@@ -205,7 +244,10 @@ class AcademicLinks extends StatelessWidget {
           new SizedBox(
               width: double.infinity,
               child: new RaisedButton(
-                child: Text('HAC', style: new TextStyle(color: Colors.yellow),),
+                child: Text(
+                  'HAC',
+                  style: new TextStyle(color: Colors.yellow),
+                ),
                 onPressed: () {
                   _launchURL(
                       'https://hac.phmschools.org/HomeAccess/Account/LogOn?ReturnUrl=%2Fhomeaccess',
@@ -222,8 +264,10 @@ class AcademicLinks extends StatelessWidget {
           new SizedBox(
             width: double.infinity,
             child: new RaisedButton(
-              child: Text('Canvas', style: new TextStyle(color: Colors.yellow),),
-
+              child: Text(
+                'Canvas',
+                style: new TextStyle(color: Colors.yellow),
+              ),
               onPressed: () {
                 _launchURL('https://phm.instructure.com/login/ldap', context);
               },
@@ -240,7 +284,10 @@ class AcademicLinks extends StatelessWidget {
           new SizedBox(
             width: double.infinity,
             child: new RaisedButton(
-              child: Text('Clever', style: new TextStyle(color: Colors.yellow),),
+              child: Text(
+                'Clever',
+                style: new TextStyle(color: Colors.yellow),
+              ),
               onPressed: () {
                 _launchURL('https://clever.com/in/phmschools', context);
               },
@@ -248,24 +295,6 @@ class AcademicLinks extends StatelessWidget {
           ),
           new Text(
             'Clever is a useful hub for all students to access specific links and pages used frequently in their classes. This will take you to the login page.',
-            style: new TextStyle(
-              color: Colors.white,
-            ),
-            textAlign: TextAlign.center,
-          ),
-
-          new SizedBox(
-            width: double.infinity,
-            child: new RaisedButton(
-              child: Text('Lunch Menus', style: new TextStyle(color: Colors.yellow),),
-              onPressed: () {
-                _launchURL('https://www.phmschools.org/food-service/penn-menus',
-                    context);
-              },
-            ),
-          ),
-          new Text(
-            'The Kingsmen Cafe offers seven different food stations for Penn students to choose from daily. Penn offers both lunch and breakfast to students. This will take you to the menu.',
             style: new TextStyle(
               color: Colors.white,
             ),
@@ -300,8 +329,6 @@ class AcademicLinks extends StatelessWidget {
   }
 }
 
-
-
 class StaffLinks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -315,7 +342,10 @@ class StaffLinks extends StatelessWidget {
           new SizedBox(
               width: double.infinity,
               child: new RaisedButton(
-                child: Text('TAC', style: new TextStyle(color: Colors.yellow),),
+                child: Text(
+                  'TAC',
+                  style: new TextStyle(color: Colors.yellow),
+                ),
                 onPressed: () {
                   _launchURL(
                       'https://eschoolplus.phmschools.org/TAC/Account/LogOn?ReturnUrl=%2fTAC',
@@ -332,10 +362,14 @@ class StaffLinks extends StatelessWidget {
           new SizedBox(
             width: double.infinity,
             child: new RaisedButton(
-              child: Text('Doculivery', style: new TextStyle(color: Colors.yellow),),
-
+              child: Text(
+                'Doculivery',
+                style: new TextStyle(color: Colors.yellow),
+              ),
               onPressed: () {
-                _launchURL('https://my.doculivery.com/External/PHMSchools/Login.aspx', context);
+                _launchURL(
+                    'https://my.doculivery.com/External/PHMSchools/Login.aspx',
+                    context);
               },
             ),
           ),
@@ -350,7 +384,10 @@ class StaffLinks extends StatelessWidget {
           new SizedBox(
             width: double.infinity,
             child: new RaisedButton(
-              child: Text('Clever', style: new TextStyle(color: Colors.yellow),),
+              child: Text(
+                'Clever',
+                style: new TextStyle(color: Colors.yellow),
+              ),
               onPressed: () {
                 _launchURL('https://clever.com/in/phmschools', context);
               },
@@ -367,10 +404,12 @@ class StaffLinks extends StatelessWidget {
           new SizedBox(
             width: double.infinity,
             child: new RaisedButton(
-              child: Text('Canvas', style: new TextStyle(color: Colors.yellow),),
+              child: Text(
+                'Canvas',
+                style: new TextStyle(color: Colors.yellow),
+              ),
               onPressed: () {
-                _launchURL('https://phm.instructure.com/login/ldap',
-                    context);
+                _launchURL('https://phm.instructure.com/login/ldap', context);
               },
             ),
           ),
@@ -379,15 +418,18 @@ class StaffLinks extends StatelessWidget {
             style: new TextStyle(
               color: Colors.white,
             ),
-            textAlign: TextAlign.center, //https://adminweb.aesoponline.com/access
+            textAlign:
+                TextAlign.center, //https://adminweb.aesoponline.com/access
           ),
           new SizedBox(
             width: double.infinity,
             child: new RaisedButton(
-              child: Text('Frontline (Aesop)', style: new TextStyle(color: Colors.yellow),),
+              child: Text(
+                'Frontline (Aesop)',
+                style: new TextStyle(color: Colors.yellow),
+              ),
               onPressed: () {
-                _launchURL('https://adminweb.aesoponline.com/access',
-                    context);
+                _launchURL('https://adminweb.aesoponline.com/access', context);
               },
             ),
           ),
@@ -396,14 +438,19 @@ class StaffLinks extends StatelessWidget {
             style: new TextStyle(
               color: Colors.white,
             ),
-            textAlign: TextAlign.center, //https://adminweb.aesoponline.com/access
+            textAlign:
+                TextAlign.center, //https://adminweb.aesoponline.com/access
           ),
           new SizedBox(
             width: double.infinity,
             child: new RaisedButton(
-              child: Text('Home File Access', style: new TextStyle(color: Colors.yellow),),
+              child: Text(
+                'Home File Access',
+                style: new TextStyle(color: Colors.yellow),
+              ),
               onPressed: () {
-                _launchURL('https://sites.google.com/a/phm.k12.in.us/home-file-access/',
+                _launchURL(
+                    'https://sites.google.com/a/phm.k12.in.us/home-file-access/',
                     context);
               },
             ),
@@ -442,8 +489,6 @@ class StaffLinks extends StatelessWidget {
     }
   }
 }
-
-
 
 class IconTxtBtn extends StatelessWidget {
   String _dest;
@@ -493,8 +538,8 @@ class IconTxtBtn extends StatelessWidget {
       );
     } else if (dest == 'stafflinks') {
       Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => StaffLinks()),
+        context,
+        MaterialPageRoute(builder: (context) => StaffLinks()),
       );
     } else {
       try {
