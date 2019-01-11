@@ -8,7 +8,25 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 
 void main() {
   //launch point for the application. Best practice is for main to be
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  _firebaseMessaging.configure(
+    onMessage: (Map<String, dynamic> message) {
+      print('on message $message');
+    },
+    onResume: (Map<String, dynamic> message) {
+      print('on resume $message');
+    },
+    onLaunch: (Map<String, dynamic> message) {
+      print('on launch $message');
+    },
+  );
+  _firebaseMessaging.requestNotificationPermissions(
+      const IosNotificationSettings(sound: true, badge: true, alert: true));
+  _firebaseMessaging.getToken().then((token){
+    print(token);
+  });
   runApp(
+
       new FlutterView()); //empty except for the runApp which begins the build process.
 
 }
@@ -45,11 +63,11 @@ class _MyHomePageState extends State<MyHomePage> {
   //homepage will not change, ie, stateless widget
   // ignore: must_be_immutable
   // may have to implement stateful widget to get rss, contact, etc?
-  FirebaseMessaging _firebaseMessaging = new FirebaseMessaging();
+//  FirebaseMessaging _firebaseMessaging = new FirebaseMessaging();
   @override
   void initState() {
     super.initState();
-    _firebaseMessaging.configure(
+/*    _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) {
         print('on message $message');
       },
@@ -64,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
         const IosNotificationSettings(sound: true, badge: true, alert: true));
     _firebaseMessaging.getToken().then((token){
       print(token);
-    });
+    });*/
   }
   @override
   Widget build(BuildContext context) {
@@ -277,7 +295,7 @@ class AcademicLinks extends StatelessWidget {
       ),
     );
   }
-
+//d
   void _launchURL(dest, context) async {
     try {
       await launch(
