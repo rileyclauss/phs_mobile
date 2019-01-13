@@ -61,11 +61,11 @@ class _MyHomePageState extends State<MyHomePage> {
   //homepage will not change, ie, stateless widget
   // ignore: must_be_immutable
   // may have to implement stateful widget to get rss, contact, etc?
-//  FirebaseMessaging _firebaseMessaging = new FirebaseMessaging();
+  FirebaseMessaging _firebaseMessaging = new FirebaseMessaging();
   @override
   void initState() {
     super.initState();
-/*    _firebaseMessaging.configure(
+    _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) {
         print('on message $message');
       },
@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
         const IosNotificationSettings(sound: true, badge: true, alert: true));
     _firebaseMessaging.getToken().then((token) {
       print(token);
-    });*/
+    });
   }
 
   @override
@@ -324,7 +324,7 @@ class AcademicLinks extends StatelessWidget {
       ),
     );
   }
-//d
+//
   void _launchURL(dest, context) async {
     try {
       await launch(

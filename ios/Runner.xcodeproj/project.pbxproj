@@ -13,7 +13,6 @@
 		3B80C3941E831B6300D905FE /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; };
 		3B80C3951E831B6300D905FE /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8992E5E021D9A3EF006F691F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8992E5DF21D9A3EF006F691F /* Images.xcassets */; };
-		8993116A21E6403300832410 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8993116921E6403300832410 /* Info.plist */; };
 		8993116C21E6415600832410 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8993116B21E6415600832410 /* GoogleService-Info.plist */; };
 		9705A1C61CF904A100538489 /* Flutter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9740EEBA1CF902C7004384FC /* Flutter.framework */; };
 		9705A1C71CF904A300538489 /* Flutter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9740EEBA1CF902C7004384FC /* Flutter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -226,7 +225,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8993116A21E6403300832410 /* Info.plist in Resources */,
 				8993116C21E6415600832410 /* GoogleService-Info.plist in Resources */,
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
