@@ -129,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 //GridView.count is most efficient for formatting and adjusting to various screen sizes
 
                 crossAxisCount: 4, //four icons per row
-                mainAxisSpacing: 20.0, // 10px between tops and bottoms
+                mainAxisSpacing: 10.0, // 10px between tops and bottoms
                 crossAxisSpacing: 8.0, // 8px side to side
                 childAspectRatio: (itemWidth /
                     itemHeight), //aspect ratio forced for items, in this case, IconTxtBtn
