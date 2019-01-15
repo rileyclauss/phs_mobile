@@ -93,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return new Scaffold(
       //scaffold is the base almost everything is built on. gives name bar and body
       //background color of icons
-
+      resizeToAvoidBottomPadding: false,
       appBar: new AppBar(
         //AppBar is the title at the top
         title: new Text(
@@ -234,7 +234,7 @@ class OpenSourceLibraries extends StatelessWidget{
         Expanded(child: Container(
           padding: EdgeInsets.all(5.0),
           child: SingleChildScrollView(child: Text(
-            Strings.TABSopenSource + Strings.LAUNCHopenSource,
+            Strings.TABSopenSource + Strings.LAUNCHopenSource + Strings.FlutteropenSource,
             maxLines: null,
 
             overflow: TextOverflow.clip,
