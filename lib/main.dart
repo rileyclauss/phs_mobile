@@ -144,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   new IconTxtBtn('https://penn.phmschools.org/news',
                       'images/newsicon.png', 'News'),
                   new IconTxtBtn(
-                      'https://penn.phmschools.org/calendars#Penn%20High%20School%20Public%20Calendar',
+                      'https://penn.phmschools.org/calendars#app',
                       'images/calendaricon.png',
                       'Calendars'), //              IconTxtButton.dart file
                   new IconTxtBtn(
