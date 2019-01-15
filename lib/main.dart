@@ -127,6 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
             child: new GridView.count(
                 //GridView.count is most efficient for formatting and adjusting to various screen sizes
+
                 crossAxisCount: 4, //four icons per row
                 mainAxisSpacing: 10.0, // 10px between tops and bottoms
                 crossAxisSpacing: 8.0, // 8px side to side
@@ -149,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   new IconTxtBtn(
                       'https://penn.phmschools.org/students-and-parents',
                       'images/sapicon.png',
-                      'Students and Parents'), //and a title to be displayed under it
+                      'Students'), //and a title to be displayed under it
                   new IconTxtBtn(
                     'academics',
                     'images/academicsicon.png',
@@ -161,8 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       'images/athleticsicon.png', 'Athletics'),
                   new IconTxtBtn(
                       'https://penn.phmschools.org/fine-arts-communications-academy-0',
-                      'images/fineartsicon.png',
-                      'Fine Arts'),
+                      'images/fineartsicon.png','Fine Arts'),
                   new IconTxtBtn(
                       'https://penn.phmschools.org/students-and-parents/get-involved/students/clubs',
                       'images/clubsicon.png',
@@ -170,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   new IconTxtBtn(
                       'stafflinks', 'images/keyicon.png', 'Staff Links'),
                   new IconTxtBtn('https://penn.phmschools.org/',
-                      'images/pennwebsite.png', 'Penn Website'),
+                      'images/pennwebsite.png', 'Website'),
                   new IconTxtBtn('https://penn.phmschools.org/staff-directory',
                       'images/contactusicon.png', 'Contact Us'),
                   new IconTxtBtn('https://penn.phmschools.org/about',
