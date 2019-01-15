@@ -194,7 +194,7 @@ class Credits extends StatelessWidget {
                 child: Container(
                     alignment: Alignment.center,
                     child: Text(
-                        "Apple Developer: Micah Focht\n\n"
+                        "\n\n\n\n\nApple Developer: Micah Focht\n\n"
                         "Android Developer: Riley Clauss\n\n"
                         "Graphics and Design: James Morris\n\n",
                         textAlign: TextAlign.center))),
@@ -228,7 +228,7 @@ class OpenSourceLibraries extends StatelessWidget{
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        title: Text('Academics Links'),
+        title: Text('Licensing'),
       ),
       body: Flex(children: <Widget>[
         Expanded(child: Container(
