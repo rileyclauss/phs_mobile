@@ -194,7 +194,7 @@ class Credits extends StatelessWidget {
                 child: Container(
                     alignment: Alignment.center,
                     child: Text(
-                        "\n\n\n\n\nApple Developer: Micah Focht\n\n"
+                        "\n\n\nApple Developer: Micah Focht\n\n"
                         "Android Developer: Riley Clauss\n\n"
                         "Graphics and Design: James Morris\n\n",
                         textAlign: TextAlign.center))),
