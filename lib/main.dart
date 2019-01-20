@@ -5,7 +5,8 @@ import 'dart:ui';
 import 'Strings.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 void main() {
   //launch point for the application. Best practice is for main to be
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
@@ -96,19 +97,30 @@ class _MyHomePageState extends State<MyHomePage> {
       resizeToAvoidBottomPadding: false,
       appBar: new AppBar(
         //AppBar is the title at the top
+        centerTitle: true,
         title: new Text(
             'Penn High School'), //may remove if we get a nice background
         //background of titlebar.
+        leading:IconButton(
+          icon: Icon(Icons.message),
+          tooltip: 'Anouncements',
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder:(context) => Announcements()),
+            );
+          },
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.people),
-            tooltip: 'More Options',
+            tooltip: 'Credits',
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Credits()),
               );
-            },
+              },
           ),
         ],
       ),
@@ -182,7 +194,43 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 } //build
+class Post {
+  final int userId;
+  final int id;
+  final String title;
+  final String body;
 
+  Post({this.userId, this.id, this.title, this.body});
+
+  factory Post.fromJson(Map<String, dynamic> json) {
+    return Post(
+      id: json['_id'],
+      title: json['post'],
+      body: json['body'],
+    );
+  }
+}
+class Announcements extends StatelessWidget {
+  @override
+  Future<http.Response> fetchPost() {
+    return http.get('http://www.json-generator.com/api/json/get/bUALwSGdvm?indent=2');
+  }
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text('Anouncements')),
+        body: new Column(
+          children: <Widget>[
+            new Center(
+                child: Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                        "Testing",
+                        textAlign: TextAlign.center)))
+          ],
+        ));
+  }
+}
 class Credits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
