@@ -213,7 +213,7 @@ class Post {
 class Announcements extends StatelessWidget {
   @override
   Future<http.Response> fetchPost() {
-    return http.get('http://www.json-generator.com/api/json/get/bUALwSGdvm?indent=2');
+    return http.get('http://www.json-generator.com/api/json/get/coKOhIBBIO?indent=2');
   }
 
   Widget build(BuildContext context) {
