@@ -26,7 +26,8 @@ flutter:
   assets:
 
     - images/abouticon.png
-    - images/academicsicon.png
+    - images/phoneicon.png
+    - images/getconnectedicon.png
     - images/athleticsicon.png
     - images/background.png
     - images/calendaricon.png
