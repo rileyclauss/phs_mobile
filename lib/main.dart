@@ -101,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: new Text(
             'Penn High School'), //may remove if we get a nice background
         //background of titlebar.
-        leading:IconButton(
+        /*leading:IconButton(
           icon: Icon(Icons.message),
           tooltip: 'Anouncements',
           onPressed: () {
@@ -110,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
               MaterialPageRoute(builder:(context) => Announcements()),
             );
           },
-        ),
+        ),*/
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.people),
@@ -210,7 +210,8 @@ class Post {
     );
   }
 }
-class Announcements extends StatelessWidget {
+
+/* class Announcements extends StatelessWidget {
   @override
   Future<http.Response> fetchPost() {
     return http.get('http://www.json-generator.com/api/json/get/coKOhIBBIO?indent=2');
@@ -231,6 +232,7 @@ class Announcements extends StatelessWidget {
         ));
   }
 }
+*/
 class Credits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
