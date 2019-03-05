@@ -11,7 +11,7 @@ dependencies:
   flutter_launcher_icons: "^0.6.1"
   firebase_messaging: ^2.0.3
   cloud_firestore: ^0.8.2
-
+  http: ^0.12.0+1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -26,7 +26,8 @@ flutter:
   assets:
 
     - images/abouticon.png
-    - images/academicsicon.png
+    - images/phoneicon.png
+    - images/getconnectedicon.png
     - images/athleticsicon.png
     - images/background.png
     - images/calendaricon.png
@@ -39,3 +40,5 @@ flutter:
     - images/pennwebsite.png
     - images/sapicon.png
     - images/splashscreen.png
+    - images/academicsicon.png
+

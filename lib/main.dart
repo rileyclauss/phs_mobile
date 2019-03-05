@@ -5,7 +5,8 @@ import 'dart:ui';
 import 'Strings.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 void main() {
   //launch point for the application. Best practice is for main to be
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
@@ -96,19 +97,30 @@ class _MyHomePageState extends State<MyHomePage> {
       resizeToAvoidBottomPadding: false,
       appBar: new AppBar(
         //AppBar is the title at the top
+        centerTitle: true,
         title: new Text(
             'Penn High School'), //may remove if we get a nice background
         //background of titlebar.
+        /*leading:IconButton(
+          icon: Icon(Icons.message),
+          tooltip: 'Anouncements',
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder:(context) => Announcements()),
+            );
+          },
+        ),*/
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.people),
-            tooltip: 'More Options',
+            tooltip: 'Credits',
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Credits()),
               );
-            },
+              },
           ),
         ],
       ),
@@ -142,39 +154,39 @@ class _MyHomePageState extends State<MyHomePage> {
                 physics: const NeverScrollableScrollPhysics(),
                 children: <Widget>[
                   new IconTxtBtn('https://penn.phmschools.org/news',
-                      'images/newsicon.png', 'News'),
+                      'images/newsicon.png', Strings.TitlesEng[0]),
                   new IconTxtBtn(
                       'https://penn.phmschools.org/calendars#app',
                       'images/calendaricon.png',
-                      'Calendars'), //              IconTxtButton.dart file
+                      Strings.TitlesEng[1]), //              IconTxtButton.dart file
                   new IconTxtBtn(
                       'https://penn.phmschools.org/students-and-parents',
                       'images/sapicon.png',
-                      'Students'), //and a title to be displayed under it
+                      Strings.TitlesEng[2]), //and a title to be displayed under it
                   new IconTxtBtn(
                     'academics',
                     'images/academicsicon.png',
-                    'Academics',
+                    Strings.TitlesEng[3],
                   ),
-                  new IconTxtBtn('https://penn.phmschools.org/counseling',
-                      'images/counseling.png', 'Counseling'),
+                  new IconTxtBtn('https://penn.phmschools.org/counseling#app',
+                      'images/counseling.png', Strings.TitlesEng[4]),
                   new IconTxtBtn('https://pennant.phmschools.org/',
-                      'images/athleticsicon.png', 'Athletics'),
+                      'images/athleticsicon.png', Strings.TitlesEng[5]),
                   new IconTxtBtn(
-                      'https://penn.phmschools.org/fine-arts-communications-academy-0',
-                      'images/fineartsicon.png','Fine Arts'),
+                      'https://penn.phmschools.org/performing-arts#app',
+                      'images/fineartsicon.png',Strings.TitlesEng[6]),
                   new IconTxtBtn(
                       'https://penn.phmschools.org/students-and-parents/get-involved/students/clubs',
                       'images/clubsicon.png',
-                      'Clubs'),
+                      Strings.TitlesEng[7]),
                   new IconTxtBtn(
-                      'stafflinks', 'images/keyicon.png', 'Staff Links'),
-                  new IconTxtBtn('https://penn.phmschools.org/',
-                      'images/pennwebsite.png', 'Website'),
+                      'stafflinks', 'images/keyicon.png', Strings.TitlesEng[8]),
+                  new IconTxtBtn('https://www.phmschools.org/safe-school-helpline',
+                      'images/phoneicon.png', Strings.TitlesEng[9]),
                   new IconTxtBtn('https://penn.phmschools.org/staff-directory',
-                      'images/contactusicon.png', 'Contact Us'),
-                  new IconTxtBtn('https://penn.phmschools.org/about',
-                      'images/abouticon.png', 'About Penn'),
+                      'images/contactusicon.png', Strings.TitlesEng[10]),
+                  new IconTxtBtn('https://penn.phmschools.org/students-and-parents/stay-informed',
+                      'images/getconnectedicon.png', Strings.TitlesEng[11]),
                 ]),
           ),
         ],
@@ -182,7 +194,45 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 } //build
+class Post {
+  final int userId;
+  final int id;
+  final String title;
+  final String body;
 
+  Post({this.userId, this.id, this.title, this.body});
+
+  factory Post.fromJson(Map<String, dynamic> json) {
+    return Post(
+      id: json['_id'],
+      title: json['post'],
+      body: json['body'],
+    );
+  }
+}
+
+/* class Announcements extends StatelessWidget {
+  @override
+  Future<http.Response> fetchPost() {
+    return http.get('http://www.json-generator.com/api/json/get/coKOhIBBIO?indent=2');
+  }
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text('Anouncements')),
+        body: new Column(
+          children: <Widget>[
+            new Center(
+                child: Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                        "Testing",
+                        textAlign: TextAlign.center)))
+          ],
+        ));
+  }
+}
+*/
 class Credits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
