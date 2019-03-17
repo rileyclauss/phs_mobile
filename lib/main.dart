@@ -263,8 +263,40 @@ class Credits extends StatelessWidget {
                 },
               ),
             ),
+            new SizedBox(
+              width: double.infinity,
+              child: new RaisedButton(
+                child: Text(
+                  'Privacy Policy',
+                  style: new TextStyle(color: Colors.yellow),
+                ),
+                onPressed: () {
+                  _launchURL('https://docs.google.com/document/u/1/d/e/2PACX-1vShjxcbuhMkyFu6nYC-hx17HRvBFXH5TsZ9trCMZ2iPQj9-XTw1PMZjaDEa8K6MwxBiqahj1aENb5o2/pub', context);
+                },
+              ),
+            ),
           ],
         ));
+  }
+  void _launchURL(dest, context) async {
+    try {
+      await launch(
+        dest,
+        option: new CustomTabsOption(
+          toolbarColor: Colors.black45,
+          enableDefaultShare: true,
+          enableUrlBarHiding: true,
+          showPageTitle: true,
+          animation: new CustomTabsAnimation.slideIn(),
+          extraCustomTabs: <String>[
+            'org.mozilla.firefox',
+            'com.microsoft.emmx',
+          ],
+        ),
+      );
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 /*
 
