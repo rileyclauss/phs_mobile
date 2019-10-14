@@ -5,8 +5,6 @@ import 'dart:ui';
 import 'Strings.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 void main() {
   //launch point for the application. Best practice is for main to be
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
@@ -101,16 +99,16 @@ class _MyHomePageState extends State<MyHomePage> {
         title: new Text(
             'Penn High School'), //may remove if we get a nice background
         //background of titlebar.
-        /*leading:IconButton(
+        leading:IconButton(
           icon: Icon(Icons.message),
           tooltip: 'Anouncements',
-          onPressed: () {
+          /*onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(builder:(context) => Announcements()),
             );
-          },
-        ),*/
+          },*/
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.people),
@@ -345,17 +343,17 @@ class AcademicLinks extends StatelessWidget {
               width: double.infinity,
               child: new RaisedButton(
                 child: Text(
-                  'HAC',
+                  'Skyward',
                   style: new TextStyle(color: Colors.yellow),
                 ),
                 onPressed: () {
                   _launchURL(
-                      'https://hac.phmschools.org/HomeAccess/Account/LogOn?ReturnUrl=%2Fhomeaccess',
+                      'https://skyweb.phmschools.org/Student',
                       context);
                 },
               )),
           new Text(
-            'Home Access Center is a web-based program that allows students and parents to track check progress and grades, manage schedules, and track attendance. This will take you to the login page.',
+            'Skyward is a web-based program that allows students and parents to track check progress and grades, manage schedules, and track attendance. This will take you to the login page.',
             style: new TextStyle(
               color: Colors.white,
             ),
@@ -443,17 +441,17 @@ class StaffLinks extends StatelessWidget {
               width: double.infinity,
               child: new RaisedButton(
                 child: Text(
-                  'TAC',
+                  'Skyward',
                   style: new TextStyle(color: Colors.yellow),
                 ),
                 onPressed: () {
                   _launchURL(
-                      'https://eschoolplus.phmschools.org/TAC/Account/LogOn?ReturnUrl=%2fTAC',
+                      'https://skyweb.phmschools.org/Student',
                       context);
                 },
               )),
           new Text(
-            'This will take you to the login page for TAC/eSchool.',
+            'This will take you to the login page for Skyward.',
             style: new TextStyle(
               color: Colors.white,
             ),
