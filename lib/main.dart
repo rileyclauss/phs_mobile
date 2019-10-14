@@ -99,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: new Text(
             'Penn High School'), //may remove if we get a nice background
         //background of titlebar.
-        leading:IconButton(
+        /*leading:IconButton(
           icon: Icon(Icons.message),
           tooltip: 'Anouncements',
           /*onPressed: () {
@@ -108,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
               MaterialPageRoute(builder:(context) => Announcements()),
             );
           },*/
-        ),
+        ),*/
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.people),
