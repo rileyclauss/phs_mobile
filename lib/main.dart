@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 void main() {
   //launch point for the application. Best practice is for main to be
+  WidgetsFlutterBinding.ensureInitialized();
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   _firebaseMessaging.configure(
     onMessage: (Map<String, dynamic> message) {
