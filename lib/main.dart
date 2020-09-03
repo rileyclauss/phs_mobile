@@ -100,16 +100,16 @@ class _MyHomePageState extends State<MyHomePage> {
         title: new Text(
             'Penn High School'), //may remove if we get a nice background
         //background of titlebar.
-        /*leading:IconButton(
+        leading:IconButton(
           icon: Icon(Icons.message),
-          tooltip: 'Anouncements',
-          /*onPressed: () {
+          tooltip: 'Announcements',
+          onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(builder:(context) => Announcements()),
             );
-          },*/
-        ),*/
+          },
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.people),
@@ -210,15 +210,15 @@ class Post {
   }
 }
 
-/* class Announcements extends StatelessWidget {
+class Announcements extends StatelessWidget {
   @override
-  Future<http.Response> fetchPost() {
-    return http.get('http://www.json-generator.com/api/json/get/coKOhIBBIO?indent=2');
-  }
+  //Future<http.Response> fetchPost() {
+    //return http.get('http://www.json-generator.com/api/json/get/coKOhIBBIO?indent=2');
+  //}
 
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Anouncements')),
+        appBar: AppBar(title: Text('Announcements')),
         body: new Column(
           children: <Widget>[
             new Center(
@@ -231,7 +231,7 @@ class Post {
         ));
   }
 }
-*/
+
 class Credits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

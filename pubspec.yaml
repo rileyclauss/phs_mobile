@@ -1,6 +1,6 @@
 name: phs_mobile
 description: The Penn High School&#x27;s mobile app for Android and iOS
-version: 1.4+7
+version: 1.5+8
 dependencies:
   flutter:
     sdk: flutter
