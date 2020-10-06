@@ -3,7 +3,7 @@
 $url = 'https://gatos-jabra-buster.azurewebsites.net/api/RssToCsv?url=https%3A%2F%2Fpenn.phmschools.org%2Frss.xml';
 // Initialize the cURL session
 $ch = curl_init($url);
-// Inintialize directory name where
+// Initialize directory name where
 // file will be save
 $dir = './';
 // Use basename() function to return
