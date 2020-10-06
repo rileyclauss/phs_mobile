@@ -315,7 +315,7 @@ class OpenSourceLibraries extends StatelessWidget{
         Expanded(child: Container(
           padding: EdgeInsets.all(5.0),
           child: SingleChildScrollView(child: Text(
-            Strings.TABSopenSource + Strings.LAUNCHopenSource + Strings.FlutteropenSource,
+            Strings.TABSopenSource + Strings.LAUNCHopenSource + Strings.FlutteropenSource + Strings.RSSopenSource,
             maxLines: null,
 
             overflow: TextOverflow.clip,
