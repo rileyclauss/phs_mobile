@@ -5,6 +5,7 @@ import 'dart:ui';
 import 'Strings.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:csv_reader/csv_reader.dart';
 void main() {
   //launch point for the application. Best practice is for main to be
   WidgetsFlutterBinding.ensureInitialized();
@@ -212,9 +213,8 @@ class Post {
 
 class Announcements extends StatelessWidget {
   @override
-  //Future<http.Response> fetchPost() {
-    //return http.get('http://www.json-generator.com/api/json/get/coKOhIBBIO?indent=2');
-  //}
+  var myCSV = CSV.from(url :'URL_TO_FILE_OR_RAW_TEXT', delimiter: ",", title:true );
+  await myCSV.initFinished; // if you want to await
 
   Widget build(BuildContext context) {
     return Scaffold(
