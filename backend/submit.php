@@ -2,7 +2,8 @@
 
 $data = array(
     $_POST['title'],
-    $_POST['body']
+    $_POST['body'],
+    $_POST['url']
 );
 
 // Open file in append mode
